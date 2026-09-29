@@ -1,0 +1,4 @@
+A digital library contains many books.
+Books contain words and information.
+Hadoop helps process library data.
+Library data can be processed using MapReduce.

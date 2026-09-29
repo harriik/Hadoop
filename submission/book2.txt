@@ -1,0 +1,4 @@
+Big data is generated from many sources.
+Hadoop can process big data efficiently.
+MapReduce is used for processing data in Hadoop.
+Data processing is important.

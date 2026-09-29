@@ -1,0 +1,4 @@
+Hadoop is a framework for big data processing.
+Hadoop uses MapReduce for distributed data processing.
+MapReduce processes large amounts of data.
+Hadoop, Hadoop! DATA data.

@@ -1,0 +1,13 @@
+﻿TOP 10 MOST FREQUENTLY OCCURRING WORDS
+
+word    frequency
+data    11
+hadoop    7
+is    4
+mapreduce    4
+processing    4
+big    3
+for    3
+library    3
+a    2
+books    2

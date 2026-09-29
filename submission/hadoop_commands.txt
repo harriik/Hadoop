@@ -1,0 +1,12 @@
+﻿docker ps -a
+docker exec hadoop hadoop version
+docker exec -u 0 hadoop hdfs dfsadmin -report
+docker exec -u 0 hadoop yarn node -list
+docker exec -u 0 hadoop hdfs dfs -ls /
+docker exec -u 0 hadoop hdfs dfs -ls /library
+docker exec -u 0 hadoop hdfs dfs -ls /library/input
+docker exec -u 0 hadoop hdfs dfs -mkdir -p /library/input
+docker exec -u 0 hadoop hdfs dfs -put -f /root/books/book1.txt /library/input/book1.txt
+docker exec -u 0 hadoop hdfs dfs -put -f /root/books/book2.txt /library/input/book2.txt
+docker exec -u 0 hadoop hdfs dfs -put -f /root/books/book3.txt /library/input/book3.txt
+docker exec -u 0 hadoop bash -lc "export HADOOP_MAPRED_HOME=/opt/hadoop; hdfs dfs -rm -r -f /library/output; hadoop jar /opt/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar -files /root/mapper.py,/root/reducer.py -mapper mapper.py -reducer reducer.py -input /library/input -output /library/output"

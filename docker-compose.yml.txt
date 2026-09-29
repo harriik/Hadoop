@@ -1,0 +1,12 @@
+version: '3'
+services:
+  hadoop:
+    image: apache/hadoop:3.3.6
+    container_name: hadoop-single-node
+    hostname: localhost
+    ports:
+      - "9870:9870"  # HDFS NameNode Web UI
+      - "8088:8088"  # YARN ResourceManager Web UI
+    command: ["standalone"]
+    volumes:
+      - ./data:/opt/hadoop/data

@@ -1,0 +1,4 @@
+﻿is\t2	
+mapreduce\t2	
+powerful\t1	
+scalable\t1	

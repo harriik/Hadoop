@@ -1,0 +1,29 @@
+﻿docker ps -a
+docker exec hadoop hadoop version
+docker exec -u 0 hadoop hdfs dfsadmin -report
+docker exec -u 0 hadoop yarn node -list
+docker exec -u 0 hadoop hdfs dfs -ls /
+docker exec -u 0 hadoop hdfs dfs -ls /library
+docker exec -u 0 hadoop hdfs dfs -ls /library/input
+docker exec -u 0 hadoop bash -lc "export HADOOP_MAPRED_HOME=/opt/hadoop; hdfs dfs -rm -r -f /library/output; hadoop jar /opt/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar -files /root/mapper.py,/root/reducer.py -mapper mapper.py -reducer reducer.py -input /library/input -output /library/output"
+docker exec -u 0 hadoop hdfs dfs -cat /library/output/part-00000
+TOP 10 MOST FREQUENTLY OCCURRING WORDS
+data    11
+hadoop    7
+is    4
+mapreduce    4
+processing    4
+big    3
+for    3
+library    3
+a    2
+books    2
+TEST CASE 1: docker exec -u 0 hadoop bash -lc "export HADOOP_MAPRED_HOME=/opt/hadoop; hdfs dfs -rm -r -f /library/testcase_case_output; hadoop jar /opt/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar -files /root/mapper.py,/root/reducer.py -mapper mapper.py -reducer reducer.py -input /library/testcase_case -output /library/testcase_case_output"
+RESULT: hadoop    4
+TEST CASE 2: docker exec -u 0 hadoop bash -lc "export HADOOP_MAPRED_HOME=/opt/hadoop; hdfs dfs -rm -r -f /library/testcase_punctuation_output; hadoop jar /opt/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar -files /root/mapper.py,/root/reducer.py -mapper mapper.py -reducer reducer.py -input /library/testcase_punctuation -output /library/testcase_punctuation_output"
+RESULT: hello    3
+TEST CASE 3: docker exec -u 0 hadoop bash -lc "export HADOOP_MAPRED_HOME=/opt/hadoop; hdfs dfs -rm -r -f /library/testcase_words_output; hadoop jar /opt/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar -files /root/mapper.py,/root/reducer.py -mapper mapper.py -reducer reducer.py -input /library/testcase_words -output /library/testcase_words_output"
+RESULT: is    2
+mapreduce    2
+powerful    1
+scalable    1
